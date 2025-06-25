@@ -1,0 +1,58 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+.cover {
+    background-image: url('https://images.unsplash.com/photo-1611605698335-bb178d2a9af1');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+button {
+    padding: 15px 30px;
+    font-size: 22px;
+    background-color: #8B0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #8B0000;
+    transition: all 0.3s ease-in-out;
+}
+button:hover {
+    box-shadow: 0 0 20px #ff4c4c, 0 0 40px #ff4c4c;
+}
+.slideshow-container {
+    padding: 20px;
+}
+.slideshow img {
+    max-width: 90%;
+    border: 3px solid #8B0000;
+    border-radius: 10px;
+}
+.message {
+    margin-top: 20px;
+    font-size: 18px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.spotify {
+    margin-top: 20px;
+}
+.spotify a {
+    color: #1DB954;
+    font-size: 18px;
+    text-decoration: none;
+}
+.hidden {
+    display: none;
+}
