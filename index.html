@@ -1,45 +1,173 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz Aniversário, Ferdinanda!</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Telas Animadas</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+
+    .tela {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .ativa {
+      display: flex;
+    }
+
+    .tela1 {
+      background-color: #800080;
+    }
+
+    .coracao {
+      position: absolute;
+      font-size: 20px;
+      animation: pulsar 1s infinite;
+      color: #ffccff;
+    }
+
+    @keyframes pulsar {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.6; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .botao {
+      padding: 20px;
+      border-radius: 50%;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .botao-vermelho {
+      background-color: red;
+    }
+
+    .tela2 {
+      background-color: #003300;
+      overflow: hidden;
+    }
+
+    .capivara {
+      position: absolute;
+      bottom: 0;
+      width: 100px;
+      height: auto;
+      animation: andar 10s linear infinite;
+    }
+
+    @keyframes andar {
+      0% { left: -120px; }
+      100% { left: 100%; }
+    }
+
+    .botao-azul {
+      background-color: blue;
+    }
+
+    .tela3 {
+      background-color: #f5f5dc;
+    }
+
+    .dedo {
+      position: absolute;
+      font-size: 30px;
+      animation: aparecer 1s infinite;
+    }
+
+    @keyframes aparecer {
+      0% { transform: scale(0.5) rotate(0deg); opacity: 0; }
+      50% { transform: scale(1.5) rotate(360deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-    <div class="cover">
-        <button id="startButton">Clique aqui</button>
-    </div>
 
-    <div class="slideshow-container hidden">
-        <div class="slideshow">
-            <img id="slide" src="1.jpg" alt="Slide">
-        </div>
-        <p class="message">
-            Feliz aniversário, Ferdinanda! 🎂💙<br><br>
-            Hoje é teu dia, e eu não poderia deixar de escrever umas palavras pra uma das pessoas mais especiais que conheci esse ano.
-            Desde o início do curso de Direito, você se mostrou alguém única, fofa, gentil, dedicada, alto astral e com um coração enorme.
-            Sério, é impossível não gostar de você!<br><br>
-            Nesses meses, a nossa amizade só cresceu. A trilha na aula de campo foi um marco, rimos tanto, conversamos sobre a vida, dividimos histórias e também silêncios confortáveis.
-            A tua companhia faz qualquer momento ser mais leve.<br><br>
-            E não posso esquecer do Dia dos Namorados. Mesmo não sendo minha namorada, você me deu um presente, pensado em cada detalhe.
-            Foi um gesto simples, mas que disse muito. Você se importou. E isso me marcou de verdade.<br><br>
-            Te desejo tudo de melhor nesse novo ciclo, Ferdinanda. Que nunca falte saúde, amor, paz, boas risadas.<br><br>
-            Como diria o Tōshirō Hitsugaya em Bleach:<br>
-            “Aqueles que não conseguem lançar mão de algo importante jamais poderão proteger coisa alguma.”<br><br>
-            E você, Ferdinanda, é exatamente o tipo de pessoa que protege o que importa, com carinho, presença e alma.<br><br>
-            Parabéns, sua linda! Que esse novo ano seja tão incrível quanto você.<br><br>
-            Com carinho,<br>
-            Gabriel ✨
-        </p>
-        <div class="spotify">
-            <a href="https://open.spotify.com/track/0mGgN6D36IFwMbKtJSesKl?si=RJ7dwOGvTd2XCuD3NnsHVQ" target="_blank">
-                ▶️ Ouça "Don't Wait" no Spotify
-            </a>
-        </div>
-    </div>
+  <!-- Tela 1 -->
+  <div class="tela tela1 ativa" id="tela1">
+    <button class="botao botao-vermelho" onclick="irParaTela2()">clique aqui</button>
+  </div>
 
-    <script src="script.js"></script>
+  <!-- Tela 2 -->
+  <div class="tela tela2" id="tela2">
+    <button class="botao botao-azul" onclick="irParaTela3()">clique de novo</button>
+  </div>
+
+  <!-- Tela 3 -->
+  <div class="tela tela3" id="tela3">
+  </div>
+
+  <script>
+    // 💜 Corações aleatórios na tela 1
+    for (let i = 0; i < 200; i++) {
+      const cor = document.createElement('div');
+      cor.classList.add('coracao');
+      cor.style.left = Math.random() * 100 + 'vw';
+      cor.style.top = Math.random() * 100 + 'vh';
+      cor.textContent = '💜';
+      document.getElementById('tela1').appendChild(cor);
+    }
+
+    // Capivaras andando na tela 2
+    const capivaras = [
+      'https://i.imgur.com/AbCZ3pF.png',
+      'https://i.imgur.com/NX5QqZD.png',
+      'https://i.imgur.com/XQdX1F9.png'
+    ];
+
+    for (let i = 0; i < 10; i++) {
+      const cap = document.createElement('img');
+      cap.src = capivaras[i % capivaras.length];
+      cap.classList.add('capivara');
+      cap.style.top = Math.random() * 80 + 'vh';
+      cap.style.animationDuration = (6 + Math.random() * 6) + 's';
+      document.getElementById('tela2').appendChild(cap);
+    }
+
+    // 🖕🏾 Dedos aparecendo na tela 3
+    function criarDedos() {
+      for (let i = 0; i < 100; i++) {
+        const dedo = document.createElement('div');
+        dedo.classList.add('dedo');
+        dedo.style.left = Math.random() * 100 + 'vw';
+        dedo.style.top = Math.random() * 100 + 'vh';
+        dedo.textContent = '🖕🏾';
+        document.getElementById('tela3').appendChild(dedo);
+      }
+    }
+
+    function irParaTela2() {
+      document.getElementById('tela1').classList.remove('ativa');
+      document.getElementById('tela2').classList.add('ativa');
+    }
+
+    function irParaTela3() {
+      document.getElementById('tela2').classList.remove('ativa');
+      document.getElementById('tela3').classList.add('ativa');
+      criarDedos();
+    }
+  </script>
 </body>
 </html>
